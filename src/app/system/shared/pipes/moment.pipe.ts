@@ -1,0 +1,12 @@
+import {Pipe, PipeTransform} from "@angular/core";
+import {noUndefined} from "@angular/compiler/src/util";
+import * as moment from "moment";
+
+@Pipe({
+    name:'psMoment'
+})
+export class MomentPipe implements PipeTransform{
+    transform(value: string, formatFrom: string, formatTo: string = 'DD.MM.YYYY' ): string{
+        return moment(value, formatFrom).format(formatTo);
+    }
+}

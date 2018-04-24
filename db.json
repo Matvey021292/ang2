@@ -14,8 +14,8 @@
     }
   ],
   "bill": {
-    "value": 100000,
-    "currency": "RUB"
+    "value": 200000,
+    "currency": "UAH"
   },
   "categories": [
     {
@@ -24,8 +24,8 @@
       "id": 1
     },
     {
-      "name": "Еда",
-      "capacity": 10000,
+      "name": "Еда1",
+      "capacity": 100001,
       "id": 2
     },
     {
