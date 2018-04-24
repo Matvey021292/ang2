@@ -17,7 +17,10 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <ps-edit-category [categories]="categories"></ps-edit-category>
+            <ps-edit-category
+                    [categories]="categories"
+                    (onCategoryEdit)="categoryWasEdited($event)"
+            ></ps-edit-category>
         </div>
     </div>
 </section>

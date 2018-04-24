@@ -35,7 +35,7 @@ export class EditCategoryComponent implements OnInit {
         const category = new Category(name, capacity, +this.currentCategoryId);
         this.categoriesService.updateCategory(category)
             .subscribe((category: Category[]) => {
-                console.log(category)
+            this.onCategoryEdit.emit(category);
             })
     }
 }
