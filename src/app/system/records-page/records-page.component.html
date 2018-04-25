@@ -9,7 +9,7 @@
 <section class="section" *ngIf="isLoaded">
     <div class="row">
         <div class="col-md-6">
-            <ps-add-event></ps-add-event>
+            <ps-add-event [categories]="categories"></ps-add-event>
         </div>
         <div class="col-md-6">
             <ps-add-category (onCategoryAdd)="NewCategoryAdded($event)" ></ps-add-category>

@@ -9,12 +9,12 @@
     {
       "email": "raul021292@gmail.com",
       "password": "02121992",
-      "name": "Andrey",
+      "name": "Matvey",
       "id": 2
     }
   ],
   "bill": {
-    "value": 200000,
+    "value": 356100,
     "currency": "UAH"
   },
   "categories": [
@@ -29,9 +29,9 @@
       "id": 2
     },
     {
-      "id": 3,
       "name": "Машина",
-      "capacity": 7000
+      "capacity": 80000,
+      "id": 3
     }
   ],
   "events": [
@@ -74,6 +74,38 @@
       "date": "10.06.2017 14:01:58",
       "id": 5,
       "description": "Заправка + проход ТО"
+    },
+    {
+      "type": "outcome",
+      "amount": 12000,
+      "category": 3,
+      "data": "25.04.2018 16:31:59",
+      "description": "test",
+      "id": 6
+    },
+    {
+      "type": "income",
+      "amount": 8000,
+      "category": 3,
+      "data": "25.04.2018 16:32:41",
+      "description": "test1",
+      "id": 7
+    },
+    {
+      "type": "income",
+      "amount": 80000,
+      "category": 3,
+      "data": "25.04.2018 16:32:53",
+      "description": "test3",
+      "id": 8
+    },
+    {
+      "type": "income",
+      "amount": 80000,
+      "category": 3,
+      "data": "25.04.2018 16:33:13",
+      "description": "test4",
+      "id": 9
     }
   ]
 }

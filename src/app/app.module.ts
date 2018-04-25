@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { UserService } from './shared/services/user.service';
 import { AuthService } from './shared/services/auth.service';
 import {SystemModule} from "./system/system.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -21,7 +22,8 @@ import {SystemModule} from "./system/system.module";
     AuthModule,
     HttpClientModule,
     AppRoutingModule,
-      SystemModule
+      SystemModule,
+      BrowserAnimationsModule
   ],
   providers: [UserService, AuthService],
   bootstrap: [AppComponent]
