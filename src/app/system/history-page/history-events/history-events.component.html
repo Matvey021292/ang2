@@ -40,7 +40,7 @@
                         <tr *ngFor="let e of events; let idx = index">
                             <th scope="row">{{ idx + 1 }}</th>
                             <th>{{ e.amount | number:'1.2'}}</th>
-                            <th>{{ e.date }}</th>
+                            <th>{{ e.date | psMoment:'DD.MM.YYYY'  }}</th>
                             <td>{{ e.catName }}</td>
                             <td>
                 <span [ngClass]="getEventClass(e)">

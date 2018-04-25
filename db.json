@@ -14,7 +14,7 @@
     }
   ],
   "bill": {
-    "value": 356100,
+    "value": 356110,
     "currency": "UAH"
   },
   "categories": [
@@ -79,7 +79,7 @@
       "type": "outcome",
       "amount": 12000,
       "category": 3,
-      "data": "25.04.2018 16:31:59",
+      "date": "25.04.2018 16:31:59",
       "description": "test",
       "id": 6
     },
@@ -87,7 +87,7 @@
       "type": "income",
       "amount": 8000,
       "category": 3,
-      "data": "25.04.2018 16:32:41",
+      "date": "25.04.2018 16:32:41",
       "description": "test1",
       "id": 7
     },
@@ -95,7 +95,7 @@
       "type": "income",
       "amount": 80000,
       "category": 3,
-      "data": "25.04.2018 16:32:53",
+      "date": "25.04.2018 16:32:53",
       "description": "test3",
       "id": 8
     },
@@ -103,9 +103,17 @@
       "type": "income",
       "amount": 80000,
       "category": 3,
-      "data": "25.04.2018 16:33:13",
+      "date": "25.04.2018 16:33:13",
       "description": "test4",
       "id": 9
+    },
+    {
+      "type": "income",
+      "amount": 10,
+      "category": 2,
+      "date": "25.04.2018 19:07:52",
+      "description": "1",
+      "id": 10
     }
   ]
 }

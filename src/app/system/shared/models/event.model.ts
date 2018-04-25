@@ -3,7 +3,7 @@ export class PSEvent {
         public type: string,
         public amount: number,
         public category: number,
-        public data: string,
+        public date: string,
         public description: string,
         public id?: string,
         public catName?: string
