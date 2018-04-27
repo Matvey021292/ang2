@@ -11,6 +11,12 @@
       "password": "111111",
       "name": "ddd",
       "id": 2
+    },
+    {
+      "email": "wfm@mail.rud",
+      "password": "12345678",
+      "name": "sadsadsad",
+      "id": 3
     }
   ],
   "bill": {

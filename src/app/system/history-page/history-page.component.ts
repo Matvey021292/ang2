@@ -6,6 +6,7 @@ import {CategoriesService} from '../shared/services/categories.service';
 import {EventsService} from '../shared/services/events.service';
 import {PSEvent} from '../shared/models/event.model';
 import {Category} from '../shared/models/category.model';
+import {Meta, Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -17,7 +18,14 @@ import {Category} from '../shared/models/category.model';
 export class HistoryPageComponent implements OnInit, OnDestroy {
 
     constructor(private categoryService: CategoriesService,
-                private eventsService: EventsService) {
+                private eventsService: EventsService,
+                private title: Title,
+                private meta: Meta) {
+        title.setTitle('История');
+        meta.addTags([
+            {name: 'keywords', content: 'регистрация История система'},
+            {name: 'description', content: 'Страница История'},
+        ]);
     }
 
     s1: Subscription;

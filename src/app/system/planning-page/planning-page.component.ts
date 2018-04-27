@@ -7,6 +7,7 @@ import { Bill } from '../shared/models/bill.model';
 import { Category } from '../shared/models/category.model';
 import { PSEvent } from '../shared/models/event.model';
 import { Subscription } from 'rxjs/Subscription';
+import {Meta, Title} from '@angular/platform-browser';
 
 
 
@@ -28,7 +29,14 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
 
     constructor(private  billService: BillService,
                 private categoryService: CategoriesService,
-                private eventService: EventsService) {
+                private eventService: EventsService,
+                private title: Title,
+                private meta: Meta) {
+        title.setTitle('Планирование');
+        meta.addTags([
+            {name: 'keywords', content: 'регистрация Планирование система'},
+            {name: 'description', content: 'Страница Планирование'},
+        ]);
     }
 
     ngOnInit() {
