@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'ps-currency-card',
@@ -7,5 +7,5 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CurrencyCardComponent {
   @Input () currency: any;
-    currencies: string[] = ['USD','EUR']
+    currencies: string[] = ['USD', 'EUR' ];
 }

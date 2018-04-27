@@ -1,12 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription";
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
 import * as moment from 'moment';
-import {CategoryService} from "../shared/services/category.service";
-import {EventService} from "../shared/services/event.service";
-import {PSEvent} from "../shared/models/event.model";
-import {Category} from "../shared/models/category.model";
-
+import {CategoriesService} from '../shared/services/categories.service';
+import {EventsService} from '../shared/services/events.service';
+import {PSEvent} from '../shared/models/event.model';
+import {Category} from '../shared/models/category.model';
 
 
 @Component({
@@ -17,8 +16,8 @@ import {Category} from "../shared/models/category.model";
 
 export class HistoryPageComponent implements OnInit, OnDestroy {
 
-    constructor(private categoryService: CategoryService,
-                private eventsService: EventService) {
+    constructor(private categoryService: CategoriesService,
+                private eventsService: EventsService) {
     }
 
     s1: Subscription;
@@ -31,11 +30,11 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     events: PSEvent[] = [];
     filteredEvents: PSEvent[] = [];
 
-    ngOnInit(){
+    ngOnInit() {
         this.s1 = Observable.combineLatest(
             this.categoryService.getCategories(),
             this.eventsService.getEvents()
-        ).subscribe((data: [Category, PSEvent]) => {
+        ).subscribe((data: [Category[], PSEvent[]]) => {
             this.categories = data[0];
             this.events = data[1];
 
@@ -43,7 +42,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
             this.calculateChartData();
 
             this.isLoaded = true;
-        })
+        });
     }
 
     private setOriginalEvents() {
@@ -88,8 +87,8 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
                 return filterData.categories.indexOf(e.category.toString()) !== -1;
             })
             .filter((e) => {
-                const momentDate = moment(e.date,"DD.MM.YYYY HH:mm:ss");
-                return momentDate.isBetween(startPeriod, endPeriod)
+                const momentDate = moment(e.date, 'DD.MM.YYYY HH:mm:ss');
+                return momentDate.isBetween(startPeriod, endPeriod);
             });
         this.calculateChartData();
     }
@@ -97,7 +96,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     onFilterCancel() {
         this.toggleFilterVisibility(false);
         this.setOriginalEvents();
-        this.calculateChartData()
+        this.calculateChartData();
     }
 
     ngOnDestroy() {

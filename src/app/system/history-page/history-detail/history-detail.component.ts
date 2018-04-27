@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
-import {EventService} from "../../shared/services/event.service";
-import {CategoryService} from "../../shared/services/category.service";
-import {PSEvent} from "../../shared/models/event.model";
-import {Category} from "../../shared/models/category.model";
-import {Subscription} from "rxjs/Subscription";
+import {ActivatedRoute, Params} from '@angular/router';
+import {EventsService} from '../../shared/services/events.service';
+import {CategoriesService} from '../../shared/services/categories.service';
+import {PSEvent} from '../../shared/models/event.model';
+import {Category} from '../../shared/models/category.model';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'ps-history-detail',
@@ -18,8 +18,8 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
     s1: Subscription;
 
     constructor(private route: ActivatedRoute,
-                private eventService: EventService,
-                private categoryService: CategoryService) {
+                private eventService: EventsService,
+                private categoryService: CategoriesService) {
     }
 
     ngOnInit() {
@@ -32,7 +32,7 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
             .subscribe((category: Category) => {
                 this.category = category;
                 this.isLoaded = true;
-            })
+            });
     }
 
     ngOnDestroy() {

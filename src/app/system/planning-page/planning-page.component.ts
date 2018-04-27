@@ -1,12 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BillService} from "../shared/services/bill.service";
-import {CategoryService} from "../shared/services/category.service";
-import {EventService} from "../shared/services/event.service";
-import {Bill} from "../shared/models/bill.model";
-import {Category} from "../shared/models/category.model";
-import {PSEvent} from "../shared/models/event.model";
-import {Subscription} from "rxjs/Subscription";
-import {Observable} from "rxjs/Observable";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BillService } from '../shared/services/bill.service';
+import {CategoriesService} from '../shared/services/categories.service';
+import {EventsService} from '../shared/services/events.service';
+import { Observable } from 'rxjs/Observable';
+import { Bill } from '../shared/models/bill.model';
+import { Category } from '../shared/models/category.model';
+import { PSEvent } from '../shared/models/event.model';
+import { Subscription } from 'rxjs/Subscription';
+
+
 
 @Component({
     selector: 'ps-planning-page',
@@ -25,8 +27,8 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
 
 
     constructor(private  billService: BillService,
-                private categoryService: CategoryService,
-                private eventService: EventService) {
+                private categoryService: CategoriesService,
+                private eventService: EventsService) {
     }
 
     ngOnInit() {
@@ -34,13 +36,12 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
             this.billService.getBill(),
             this.categoryService.getCategories(),
             this.eventService.getEvents()
-        ).subscribe((data: [Bill, Category[] , PSEvent[]]) => {
+        ).subscribe((data: [Bill, Category[], PSEvent[]]) => {
             this.bill = data[0];
             this.categories = data[1];
             this.events = data[2];
-
             this.isLoaded = true;
-        })
+        });
     }
 
     getCategoryCost(cat: Category): number {
@@ -48,20 +49,20 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
         return catEvents.reduce((total, e) => {
             total += e.amount;
             return total;
-        }, 0)
+        }, 0);
 
     }
-    private getPercent(cat: Category):number{
-            const percent = (100 * this.getCategoryCost(cat))/cat.capacity;
+    private getPercent(cat: Category): number {
+            const percent = (100 * this.getCategoryCost(cat)) / +cat.capacity;
             return percent > 100 ? 100 : percent;
     }
-    getCatPercent(cat: Category):string{
-        return this.getPercent(cat)+'%';
+    getCatPercent(cat: Category): string {
+        return this.getPercent(cat) + '%';
     }
 
-    getCatColorClass(cat: Category):string{
+    getCatColorClass(cat: Category): string {
         const percent = this.getPercent(cat);
-        return percent < 60 ? 'success': percent >=100 ? "danger" : 'warning';
+        return percent < 60 ? 'success' : percent >= 100 ? 'danger' : 'warning';
     }
     ngOnDestroy() {
         if (this.s1) {

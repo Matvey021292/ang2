@@ -1,17 +1,17 @@
 
-import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
 import { User } from '../models/user.model';
-import {BaseApi} from "../core/base.api";
+import {BaseApi} from '../core/base.api';
+import {Http} from '@angular/http';
 
 
 
 @Injectable()
 
 export class UserService extends BaseApi{
-  constructor( public http: HttpClient ) {
+  constructor( public http: Http ) {
     super(http);
   }
 
@@ -21,6 +21,6 @@ export class UserService extends BaseApi{
   }
 
   createNewUser(user: User): Observable<any> {
-      return this.post('users',user);
+      return this.post('users', user);
   }
 }

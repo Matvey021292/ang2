@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from "../shared/models/category.model";
-import {CategoryService} from "../shared/services/category.service";
+import {Category} from '../shared/models/category.model';
+import {CategoriesService} from '../shared/services/categories.service';
 
 @Component({
   selector: 'ps-records-page',
@@ -11,7 +11,7 @@ export class RecordsPageComponent implements OnInit {
     categories: Category[] = [];
     isLoaded = false;
 
-    constructor(private categoryService: CategoryService) {
+    constructor(private categoryService: CategoriesService) {
     }
 
     ngOnInit() {
@@ -19,7 +19,7 @@ export class RecordsPageComponent implements OnInit {
             .subscribe((categories: Category[]) => {
                 this.categories = categories;
                 this.isLoaded = true;
-            })
+            });
     }
 
     NewCategoryAdded(category: Category) {

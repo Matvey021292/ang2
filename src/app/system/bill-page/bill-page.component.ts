@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs/Subscription";
-import {Observable} from "rxjs/Observable";
-import {BillService} from "../shared/services/bill.service";
-import {Bill} from "../shared/models/bill.model";
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
+import {BillService} from '../shared/services/bill.service';
+import {Bill} from '../shared/models/bill.model';
 
 @Component({
   selector: 'ps-bill-page',
@@ -13,7 +13,7 @@ export class BillPageComponent implements  OnInit, OnDestroy {
     sub1: Subscription;
     sub2: Subscription;
 
-    currency:any;
+    currency: any;
     bill: Bill;
 
     isLoaded = false;
@@ -23,24 +23,24 @@ export class BillPageComponent implements  OnInit, OnDestroy {
         this.sub1 =  Observable.combineLatest(
             this.billService.getBill(),
             this.billService.getCurrency(),
-        ).subscribe((data: [Bill,any])=>{
+        ).subscribe((data: [Bill, any ]) => {
             this.bill = data[0];
             this.currency = data[1];
             this.isLoaded    = true;
-        })
+        });
     }
-    onRefresh(){
+    onRefresh() {
       this.isLoaded = false
         this.sub2 = this.billService.getCurrency()
             .delay(2000)
-            .subscribe((currency:any) => {
+            .subscribe((currency: any ) => {
                 this.currency = currency;
                 this.isLoaded = true;
-            })
+            });
     }
-    ngOnDestroy(){
+    ngOnDestroy() {
         this.sub1.unsubscribe();
-        if(this.sub2){
+        if (this.sub2) {
             this.sub2.unsubscribe();
         }
     }

@@ -1,7 +1,7 @@
-export class Category{
+export class Category {
     constructor(
         public name: string,
         public capacity: string,
         public id?: number
-    ){}
+    ) {}
 }

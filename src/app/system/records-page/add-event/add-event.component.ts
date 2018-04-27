@@ -1,13 +1,13 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {PSEvent} from "../../shared/models/event.model";
+import {NgForm} from '@angular/forms';
+import {PSEvent} from '../../shared/models/event.model';
 import * as moment from 'moment';
-import {Category} from "../../shared/models/category.model";
-import {EventService} from "../../shared/services/event.service";
-import {BillService} from "../../shared/services/bill.service";
-import {Bill} from "../../shared/models/bill.model";
-import {Message} from "../../../shared/models/message.model";
-import {Subscription} from "rxjs/Subscription";
+import {Category} from '../../shared/models/category.model';
+import {EventsService} from '../../shared/services/events.service';
+import {BillService} from '../../shared/services/bill.service';
+import {Bill} from '../../shared/models/bill.model';
+import {Message} from '../../../shared/models/message.model';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'ps-add-event',
@@ -27,7 +27,7 @@ export class AddEventComponent implements OnInit, OnDestroy {
 
     message: Message;
 
-    constructor(private eventsService: EventService,
+    constructor(private eventsService: EventsService,
                 private billService: BillService) {
     }
 
@@ -37,12 +37,14 @@ export class AddEventComponent implements OnInit, OnDestroy {
 
     private showMessage(text: string) {
         this.message.text = text;
-        window.setTimeout(() => this.message.text = '', 5000)
+        window.setTimeout(() => this.message.text = '', 5000);
     }
 
     onSubmit(form: NgForm) {
-        let {amount, category, type, description} = form.value;
-        if (amount < 0) amount *= -1;
+        let {amount, description, category, type}  = form.value;
+        if (amount < 0) {
+            amount *= -1;
+        }
         const event = new PSEvent(
             type,
             amount,
@@ -70,14 +72,18 @@ export class AddEventComponent implements OnInit, OnDestroy {
                             description: ' ',
                             category: 1,
                             type: 'outcome'
-                        })
+                        });
                     });
             });
 
     }
     ngOnDestroy() {
-        if(this.sub1) this.sub1.unsubscribe();
-        if(this.sub2) this.sub2.unsubscribe();
+        if (this.sub1) {
+            this.sub1.unsubscribe();
+        }
+        if (this.sub2) {
+            this.sub2.unsubscribe();
+        }
     }
 
 }

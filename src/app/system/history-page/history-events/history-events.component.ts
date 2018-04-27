@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Category} from "../../shared/models/category.model";
-import {PSEvent} from "../../shared/models/event.model";
+import {Category} from '../../shared/models/category.model';
+import {PSEvent} from '../../shared/models/event.model';
 
 @Component({
     selector: 'ps-history-events',
@@ -11,8 +11,8 @@ export class HistoryEventsComponent implements OnInit {
 
     @Input() categories: Category[] = [];
     @Input() events: PSEvent[] = [];
-    searchValue ='';
-    searchPlaceholder ='Сумма';
+    searchValue = '';
+    searchPlaceholder = 'Сумма';
     searchField = 'amount';
 
     constructor() {
@@ -29,14 +29,15 @@ export class HistoryEventsComponent implements OnInit {
             'label': true,
             'label-danger': e.type === 'outcome',
             'label-success': e.type === 'income'
-        }
+        };
     }
-    chacheCriteria(field:string){
+
+    chacheCriteria(field: string) {
         const nameMap = {
-            amount:'Сумма',
-            date:'Дата',
-            category:'Категория',
-            type:'Тип'
+            amount: 'Сумма',
+            date: 'Дата',
+            category: 'Категория',
+            type: 'Тип'
         };
         this.searchPlaceholder = nameMap[field];
         this.searchField = field;

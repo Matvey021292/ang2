@@ -1,4 +1,4 @@
-import {Bill} from "../../shared/models/bill.model";
+import {Bill} from '../../shared/models/bill.model';
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -18,8 +18,8 @@ export class BillCardComponent implements OnInit {
 
   ngOnInit() {
     const { rates } = this.currency;
-      this.dollar = (rates['USD']/rates['EUR']) * this.bill.value/rates['EUR'];
-      this.euro = (rates['EUR']/rates['EUR']) * this.bill.value/rates['EUR'];
+      this.dollar = (rates['USD']) * this.bill.value;
+      this.euro = (rates['EUR']) * this.bill.value;
 
   }
 }

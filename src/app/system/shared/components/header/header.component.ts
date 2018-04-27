@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../../../shared/services/auth.service";
-import {User} from "../../../../shared/models/user.model";
-import {Router} from "@angular/router";
+import {AuthService} from '../../../../shared/services/auth.service';
+import {User} from '../../../../shared/models/user.model';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  date:Date = new Date();
+  date: Date = new Date();
   user: User;
   constructor(
       private authService: AuthService,
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(window.localStorage.getItem('user'));
   }
-  onLogout(){
+  onLogout() {
   this.authService.lagout();
   this.router.navigate(['/login']);
   }

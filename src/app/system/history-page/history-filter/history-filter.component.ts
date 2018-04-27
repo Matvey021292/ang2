@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Category} from "../../shared/models/category.model";
+import {Category} from '../../shared/models/category.model';
 
 @Component({
     selector: 'ps-history-filter',
@@ -33,24 +33,28 @@ export class HistoryFilterComponent {
         this.selectedTypes = [];
         this.selectedCategories = [];
         this.selectedPeriod = 'd';
-        this.onFilterCancel.emit()
+        this.onFilterCancel.emit();
     }
 
     private calculateInputParams(field: string, checked: boolean, value: string) {
         if (checked) {
-            this[field].indexOf(value) !== -1 ? this[field].push(value) : null;
+            if (this[field].indexOf(value) !== -1) {
+                this[field].push(value);
+            } else {
+                return null;
+            }
         } else {
-            this[field] = this[field].filter(i => i !== value)
+            this[field] = this[field].filter(i => i !== value);
         }
     }
 
     handleChangeType({checked, value}) {
-        this.calculateInputParams('selectedTypes', checked, value)
+        this.calculateInputParams('selectedTypes', checked, value);
     }
 
 
     handleChangeCategory({checked, value}) {
-        this.calculateInputParams('selectedCategories', checked, value)
+        this.calculateInputParams('selectedCategories', checked, value);
     }
 
     applyFilter() {

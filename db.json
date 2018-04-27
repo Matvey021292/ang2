@@ -17,6 +17,18 @@
       "password": "111111",
       "name": "test",
       "id": 3
+    },
+    {
+      "email": "test@test.com",
+      "password": "12345678",
+      "name": "test",
+      "id": 4
+    },
+    {
+      "email": "wfm@mail.ru",
+      "password": "12345678",
+      "name": "Matvey",
+      "id": 5
     }
   ],
   "bill": {
