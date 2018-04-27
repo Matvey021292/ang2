@@ -10,7 +10,7 @@ import {Http} from '@angular/http';
 
 @Injectable()
 
-export class UserService extends BaseApi{
+export class UsersService extends BaseApi {
   constructor( public http: Http ) {
     super(http);
   }

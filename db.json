@@ -7,28 +7,10 @@
       "name": "Администратор"
     },
     {
-      "email": "raul021292@gmail.com",
-      "password": "02121992",
-      "name": "Matvey",
-      "id": 2
-    },
-    {
-      "email": "test@test.com",
-      "password": "111111",
-      "name": "test",
-      "id": 3
-    },
-    {
-      "email": "test@test.com",
-      "password": "12345678",
-      "name": "test",
-      "id": 4
-    },
-    {
       "email": "wfm@mail.ru",
-      "password": "12345678",
-      "name": "Matvey",
-      "id": 5
+      "password": "111111",
+      "name": "ddd",
+      "id": 2
     }
   ],
   "bill": {

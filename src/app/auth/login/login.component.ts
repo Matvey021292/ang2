@@ -1,11 +1,11 @@
-import {AuthService} from './../../shared/services/auth.service';
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-
-import {User} from './../../shared/models/user.model';
-import {UserService} from './../../shared/services/user.service';
-import {Message} from '../../shared/models/message.model';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+
+import {UsersService} from '../../shared/services/users.service';
+import {User} from './../../shared/models/user.model';
+import {Message} from '../../shared/models/message.model';
+import {AuthService} from './../../shared/services/auth.service';
 
 @Component({
     selector: 'ps-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     message: Message;
 
     constructor(
-        private userService: UserService,
+        private usersService: UsersService,
         private authService: AuthService,
         private router: Router,
         private route: ActivatedRoute
@@ -34,6 +34,11 @@ export class LoginComponent implements OnInit {
                     this.showMessage({
                         text: 'Теперь вы можете войти в систему',
                         type: 'success'
+                    });
+                } else if (params['accessDenied']) {
+                    this.showMessage({
+                        text: 'Для роботы с приложением нужно залогиниться',
+                        type: 'warning'
                     });
                 }
             });
@@ -55,7 +60,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         const formdata = this.form.value;
-        this.userService.getUserByEmail(formdata.email)
+        this.usersService.getUserByEmail(formdata.email)
             .subscribe((user: User) => {
                 if (user) {
                     if (user.password === formdata.password) {

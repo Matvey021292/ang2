@@ -60,5 +60,4 @@ import {FilterPipe} from './shared/pipes/filter.pipe';
     ]
 })
 
-export class SystemModule {
-}
+export class SystemModule {}
