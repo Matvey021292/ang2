@@ -9,7 +9,7 @@
     </div>
 </div>
 <div *ngIf="!isLoaded" class="text-center">
-    Loading.....
+    <ps-loader></ps-loader>
 </div>
 <div *ngIf="isLoaded">
     <ps-history-chart [data]="chartData"></ps-history-chart>

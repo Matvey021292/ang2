@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
                     });
                 } else if (params['accessDenied']) {
                     this.showMessage({
-                        text: 'Для роботы с приложением нужно залогиниться',
+                        text: 'Для роботы с приложением нужно зарегистрироваться',
                         type: 'warning'
                     });
                 }

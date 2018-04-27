@@ -25,6 +25,7 @@ import {HistoryEventsComponent} from './history-page/history-events/history-even
 import {HistoryDetailComponent} from './history-page/history-detail/history-detail.component';
 import {HistoryFilterComponent} from './history-page/history-filter/history-filter.component';
 import {FilterPipe} from './shared/pipes/filter.pipe';
+import {LoaderComponent} from '../shared/components/loader/loader.component';
 
 @NgModule({
     imports: [
